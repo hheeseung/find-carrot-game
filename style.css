@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-image: url('img/background.png');
+  background-size: cover;
+}
+
+.game-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.game-control__play,
+.game-control__stop,
+.game-control__timer {
+  border-radius: 10px;
+  border: 3px solid black;
+  margin-bottom: 10px;
+}
+
+.game-control__play,
+.game-control__stop {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  background-color: blanchedalmond;
+  transition: all 0.2s linear;
+}
+
+.game-control__play:hover,
+.game-control__stop:hover {
+  transform: scale(1.1);
+}
+
+.game-control__timer {
+  padding: 10px 50px;
+  background-color: white;
+  font-size: 35px;
+}
+
+.game-control__carrot-count {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 40px;
+  background-color: salmon;
+  color: white;
+  text-align: center;
+  border-radius: 30px;
+  border: 2px solid black;
+}
