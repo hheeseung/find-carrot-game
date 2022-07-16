@@ -10,7 +10,7 @@ body {
   flex-direction: column;
 }
 
-.game-control {
+.game__control {
   display: flex;
   margin-top: 30px;
   align-items: center;
@@ -18,16 +18,16 @@ body {
   flex-basis: 50%;
 }
 
-.game-control__play,
-.game-control__stop,
-.game-control__timer {
+.game__control__play,
+.game__control__stop,
+.game__control__timer {
   border-radius: 10px;
   border: 4px solid black;
   margin-bottom: 10px;
 }
 
-.game-control__play,
-.game-control__stop {
+.game__control__play,
+.game__control__stop {
   cursor: pointer;
   width: 60px;
   height: 60px;
@@ -36,18 +36,18 @@ body {
   transition: all 0.2s linear;
 }
 
-.game-control__play:hover,
-.game-control__stop:hover {
+.game__control__play:hover,
+.game__control__stop:hover {
   transform: scale(1.1);
 }
 
-.game-control__timer {
+.game__control__timer {
   padding: 10px 50px;
   background-color: white;
   font-size: 35px;
 }
 
-.game-control__carrot-count {
+.game__control__count {
   width: 60px;
   height: 60px;
   line-height: 60px;
@@ -59,25 +59,30 @@ body {
   border: 3px solid black;
 }
 
-.game-field {
+.game__field {
   flex-basis: 50%;
+  position: relative;
 }
 
-.replay {
+.game__replay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: fit-content;
-  margin: auto;
   padding: 20px;
   border-radius: 20px;
   color: white;
   font-size: 70px;
+  z-index: 1;
 }
 
-.replay__btn {
+.game__replay__btn {
   cursor: pointer;
   width: 60px;
   height: 60px;
@@ -88,10 +93,15 @@ body {
   font-weight: bold;
 }
 
-.replay__btn:hover {
+.game__replay__btn:hover {
   background-color: white;
 }
 
 .hidden {
   display: none;
+}
+
+.carrot,
+.bug {
+  cursor: pointer;
 }
