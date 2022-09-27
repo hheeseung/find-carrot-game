@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a4dc4c6470.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <title>Carrot Game</title>
   </head>
@@ -11,14 +15,21 @@
     <main class="game-field">
       <section class="upper-field">
         <div class="player">
-          <button class="play-btn">▶</button>
+          <button class="play-btn">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button class="stop-btn hidden">
+            <i class="fa-solid fa-stop"></i>
+          </button>
           <div class="timer">00:00</div>
           <div class="carrot-count">0</div>
         </div>
       </section>
       <section class="lower-field"></section>
       <div class="replay hidden">
-        <button class="replay-btn">Try Again</button>
+        <button class="replay-btn">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
         <span class="replay-text"></span>
       </div>
     </main>

@@ -73,12 +73,19 @@ body {
 }
 
 .replay-btn {
+  width: 70px;
+  height: 70px;
   cursor: pointer;
-  padding: 10px;
-  font-size: x-large;
+  font-size: 35px;
   border-radius: 15px;
   background-color: wheat;
   margin: 20px 0;
+}
+
+.replay-text {
+  font-size: 80px;
+  color: white;
+  margin-top: 20px;
 }
 
 .lower-field {
