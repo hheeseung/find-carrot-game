@@ -23,6 +23,7 @@ const TIME_LIMIT = 10;
 let TIMER;
 
 function initGame() {
+  count.innerText = ITEM_COUNT;
   setItems('carrot', ITEM_COUNT, 'img/carrot.png');
   setItems('bug', ITEM_COUNT, 'img/bug.png');
   startTimer();
@@ -81,8 +82,12 @@ function activeStopButton() {
 
 function stopGame() {
   clearInterval(TIMER);
+  popupText('REPLAY❓');
+}
+
+function popupText(text) {
   replayPopup.classList.remove(HIDDEN_CLASSNAME);
-  replayPopupText.innerText = 'REPLAY❓';
+  replayPopupText.innerText = text;
 }
 
 // function onPlayBtnClick() {
