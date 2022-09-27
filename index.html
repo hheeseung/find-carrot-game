@@ -4,32 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="style.css" />
-    <title>Find Carrot Game</title>
-    <script
-      src="https://kit.fontawesome.com/a4dc4c6470.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="main.js" defer></script>
+    <title>Carrot Game</title>
   </head>
   <body>
-    <section class="game__control">
-      <button class="game__control__play">
-        <i class="fa-solid fa-play hidden"></i>
-      </button>
-      <button class="game__control__stop hidden">
-        <i class="fa-solid fa-stop"></i>
-      </button>
-      <div class="game__control__timer">00:00</div>
-      <div class="game__control__count">0</div>
-    </section>
-    <div class="game__replay hidden">
-      <button class="game__replay__btn">
-        <i class="fa-solid fa-arrow-rotate-right"></i>
-      </button>
-      <span class="game__replay__text"></span>
-    </div>
-    <section class="game__field"></section>
+    <main class="game-field">
+      <section class="upper-field">
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <div class="timer">00:00</div>
+          <div class="carrot-count">0</div>
+        </div>
+      </section>
+      <div class="replay">
+        <button class="replay-btn">Try Again</button>
+        <span class="replay-text"></span>
+      </div>
+      <section class="lower-field"></section>
+    </main>
+    <script src="app.js"></script>
   </body>
 </html>
