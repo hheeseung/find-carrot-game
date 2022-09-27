@@ -18,12 +18,14 @@ const HIDDEN_CLASSNAME = 'hidden';
 const FIELD_RECT = field.getBoundingClientRect();
 const ITEM_SIZE = 80;
 const ITEM_COUNT = 10;
-let leftTime = 10;
-let leftTimeCounter;
+const TIME_LIMIT = 10;
+
+let TIMER;
 
 function initGame() {
   setItems('carrot', ITEM_COUNT, 'img/carrot.png');
   setItems('bug', ITEM_COUNT, 'img/bug.png');
+  startTimer();
 }
 
 function setItems(className, count, imgSrc) {
@@ -47,6 +49,28 @@ function setItems(className, count, imgSrc) {
 
 function Random(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function startTimer() {
+  let runningTime = TIME_LIMIT;
+  updateCountdown(runningTime);
+  TIMER = setInterval(() => {
+    if (runningTime <= 0) {
+      clearInterval(TIMER);
+      return;
+    }
+    updateCountdown(--runningTime);
+  }, 1000);
+}
+
+function updateCountdown(time) {
+  const min = Math.floor(time / 60);
+  const sec = time % 60;
+  if (sec < 10) {
+    timer.innerText = `0${min}:0${sec}`;
+  } else {
+    timer.innerText = `0${min}:${sec}`;
+  }
 }
 
 // function onPlayBtnClick() {
