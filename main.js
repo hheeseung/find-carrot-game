@@ -6,7 +6,7 @@ const BUG_CLICK = new Audio('/sound/bug_pull.mp3');
 const GAME_CLEAR = new Audio('/sound/game_win.mp3');
 
 const playBtn = document.querySelector('.play-btn');
-const stopBtn = document.querySelector('.game__control__stop');
+const stopBtn = document.querySelector('.stop-btn');
 const timer = document.querySelector('.timer');
 const field = document.querySelector('.lower-field');
 const count = document.querySelector('.carrot-count');
@@ -26,6 +26,7 @@ function initGame() {
   setItems('carrot', ITEM_COUNT, 'img/carrot.png');
   setItems('bug', ITEM_COUNT, 'img/bug.png');
   startTimer();
+  activeStopButton();
 }
 
 function setItems(className, count, imgSrc) {
@@ -73,6 +74,17 @@ function updateCountdown(time) {
   }
 }
 
+function activeStopButton() {
+  playBtn.classList.add(HIDDEN_CLASSNAME);
+  stopBtn.classList.remove(HIDDEN_CLASSNAME);
+}
+
+function stopGame() {
+  clearInterval(TIMER);
+  replayPopup.classList.remove(HIDDEN_CLASSNAME);
+  replayPopupText.innerText = 'REPLAY❓';
+}
+
 // function onPlayBtnClick() {
 //   GAME_BGM.play();
 //   playBtn.classList.add(HIDDEN_CLASSNAME);
@@ -90,19 +102,6 @@ function updateCountdown(time) {
 //   clearInterval(leftTimeCounter);
 //   replayPopup.classList.remove(HIDDEN_CLASSNAME);
 //   replayPopupText.innerText = 'REPLAY❓';
-// }
-
-// function gameTimeCounter() {
-//   if (leftTime < 10) {
-//     timer.innerText = `00:0${leftTime}`;
-//   } else {
-//     timer.innerText = `00:${leftTime}`;
-//   }
-//   leftTime -= 1;
-//   if (leftTime < 0) {
-//     GAME_BGM.pause();
-//     clearInterval(leftTimeCounter);
-//   }
 // }
 
 // function itemClickEvent(item) {
@@ -142,5 +141,5 @@ function updateCountdown(time) {
 // }
 
 playBtn.addEventListener('click', initGame);
-// stopBtn.addEventListener('click', onStopBtnClick);
-// replayBtn.addEventListener('click', onReplayBtnClick);
+stopBtn.addEventListener('click', stopGame);
+// replayBtn.addEventListener('click', );
