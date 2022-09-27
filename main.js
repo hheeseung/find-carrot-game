@@ -90,25 +90,6 @@ function popupText(text) {
   replayPopupText.innerText = text;
 }
 
-// function onPlayBtnClick() {
-//   GAME_BGM.play();
-//   playBtn.classList.add(HIDDEN_CLASSNAME);
-//   stopBtn.classList.remove(HIDDEN_CLASSNAME);
-//   leftTimeCounter = setInterval(gameTimeCounter, 1000);
-//   setItems('carrot', '/img/carrot.png', 10);
-//   setItems('bug', '/img/bug.png', 10);
-//   count.innerText = carrotCount;
-// }
-
-// function onStopBtnClick() {
-//   GAME_BGM.pause();
-//   STOP_SOUND.play();
-//   stopBtn.classList.add(HIDDEN_CLASSNAME);
-//   clearInterval(leftTimeCounter);
-//   replayPopup.classList.remove(HIDDEN_CLASSNAME);
-//   replayPopupText.innerText = 'REPLAY❓';
-// }
-
 // function itemClickEvent(item) {
 //   if (item.className === 'carrot') {
 //     item.addEventListener('click', () => {
