@@ -17,7 +17,9 @@ JavaScript DOM 객체를 활용한 당근 줍기 게임입니다.
 
 https://hheeseung.github.io/find-carrot-game/
 
-## 프로젝트를 하면서 어려웠던 점
+## During the Project
+
+### 어려웠던 점
 
 큰 틀을 기능별로 나누어 잡고 시작했는데, 큰 단위로 구현하려니 응집도가 높아져 클릭 시 나타나야 할 이벤트들을 구현하기가 어려워졌습니다.
 
