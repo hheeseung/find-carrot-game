@@ -96,3 +96,8 @@ body {
 .hidden {
   display: none;
 }
+
+.carrot,
+.bug {
+  cursor: pointer;
+}
