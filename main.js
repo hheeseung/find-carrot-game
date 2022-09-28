@@ -1,9 +1,9 @@
 // sound effect
-const GAME_BGM = new Audio('/sound/bg.mp3');
-const STOP_SOUND = new Audio('/sound/alert.wav');
+const GAME_START = new Audio('/sound/bg.mp3');
+const GAME_STOP = new Audio('/sound/alert.wav');
+const GAME_CLEAR = new Audio('/sound/game_win.mp3');
 const CARROT_CLICK = new Audio('/sound/carrot_pull.mp3');
 const BUG_CLICK = new Audio('/sound/bug_pull.mp3');
-const GAME_CLEAR = new Audio('/sound/game_win.mp3');
 
 const playBtn = document.querySelector('.play-btn');
 const stopBtn = document.querySelector('.stop-btn');
@@ -23,26 +23,43 @@ const TIME_LIMIT = 10;
 let gameTimer = undefined;
 let gameScore = 0;
 
+function playSound(sound) {
+  sound.load();
+  sound.play();
+}
+
+function stopSound(sound) {
+  sound.pause();
+}
+
 function startGame() {
   initGame();
+  playSound(GAME_START);
 }
 
 function stopGame() {
   inactiveStopButton();
   clearInterval(gameTimer);
   popupText('REPLAY❓');
+  stopSound(GAME_START);
+  playSound(GAME_STOP);
 }
 
 function replayGame() {
   field.innerHTML = '';
   replayPopup.classList.add(HIDDEN_CLASSNAME);
   initGame();
+  playSound(GAME_START);
 }
 
 function finishGame(win) {
-  // if (win) {
-  // } else {
-  // }
+  if (win) {
+    stopSound(GAME_START);
+    playSound(GAME_CLEAR);
+  } else {
+    stopSound(GAME_START);
+    playSound(BUG_CLICK);
+  }
   inactiveStopButton();
   clearInterval(gameTimer);
   popupText(win ? 'YOU WIN🎉' : 'YOU LOSE😥');
@@ -121,6 +138,7 @@ function popupText(text) {
 function onItemClick(e) {
   const target = e.target;
   if (target.matches('.carrot')) {
+    playSound(CARROT_CLICK);
     target.remove();
     gameScore++;
     updateScore();
@@ -128,6 +146,8 @@ function onItemClick(e) {
       finishGame(true);
     }
   } else if (target.matches('.bug')) {
+    playSound(BUG_CLICK);
+    stopSound(GAME_START);
     finishGame(false);
   }
 }
