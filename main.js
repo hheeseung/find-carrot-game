@@ -20,10 +20,38 @@ const ITEM_SIZE = 80;
 const ITEM_COUNT = 10;
 const TIME_LIMIT = 10;
 
-let TIMER;
+let gameTimer = undefined;
+let gameScore = 0;
+
+function startGame() {
+  initGame();
+}
+
+function stopGame() {
+  inactiveStopButton();
+  clearInterval(gameTimer);
+  popupText('REPLAY❓');
+}
+
+function replayGame() {
+  field.innerHTML = '';
+  replayPopup.classList.add(HIDDEN_CLASSNAME);
+  initGame();
+}
+
+function finishGame(win) {
+  // if (win) {
+  // } else {
+  // }
+  inactiveStopButton();
+  clearInterval(gameTimer);
+  popupText(win ? 'YOU WIN🎉' : 'YOU LOSE😥');
+}
 
 function initGame() {
+  field.innerHTML = '';
   count.innerText = ITEM_COUNT;
+  gameScore = 0;
   setItems('carrot', ITEM_COUNT, 'img/carrot.png');
   setItems('bug', ITEM_COUNT, 'img/bug.png');
   startTimer();
@@ -56,9 +84,10 @@ function Random(min, max) {
 function startTimer() {
   let runningTime = TIME_LIMIT;
   updateCountdown(runningTime);
-  TIMER = setInterval(() => {
+  gameTimer = setInterval(() => {
     if (runningTime <= 0) {
-      clearInterval(TIMER);
+      clearInterval(gameTimer);
+      finishGame(gameScore === ITEM_COUNT);
       return;
     }
     updateCountdown(--runningTime);
@@ -80,9 +109,8 @@ function activeStopButton() {
   stopBtn.classList.remove(HIDDEN_CLASSNAME);
 }
 
-function stopGame() {
-  clearInterval(TIMER);
-  popupText('REPLAY❓');
+function inactiveStopButton() {
+  stopBtn.classList.add(HIDDEN_CLASSNAME);
 }
 
 function popupText(text) {
@@ -90,42 +118,25 @@ function popupText(text) {
   replayPopupText.innerText = text;
 }
 
-// function itemClickEvent(item) {
-//   if (item.className === 'carrot') {
-//     item.addEventListener('click', () => {
-//       item.classList.add(HIDDEN_CLASSNAME);
-//       CARROT_CLICK.play();
-//       carrotCount--;
-//       count.innerText = carrotCount;
-//       if (carrotCount === 0 && leftTime > 0) {
-//         GAME_BGM.pause();
-//         GAME_CLEAR.play();
-//         clearInterval(leftTimeCounter);
-//         replayPopupText.innerText = 'YOU WIN🎉';
-//         replayPopup.classList.remove(HIDDEN_CLASSNAME);
-//       }
-//     });
-//   }
-//   if (item.className === 'bug') {
-//     item.addEventListener('click', () => {
-//       GAME_BGM.pause();
-//       BUG_CLICK.play();
-//       clearInterval(leftTimeCounter);
-//       replayPopupText.innerText = 'YOU LOSE👎';
-//       replayPopup.classList.remove(HIDDEN_CLASSNAME);
-//     });
-//   }
-// }
+function onItemClick(e) {
+  const target = e.target;
+  if (target.matches('.carrot')) {
+    target.remove();
+    gameScore++;
+    updateScore();
+    if (gameScore === ITEM_COUNT) {
+      finishGame(true);
+    }
+  } else if (target.matches('.bug')) {
+    finishGame(false);
+  }
+}
 
-// function onReplayBtnClick() {
-//   GAME_BGM.load();
-//   leftTime = 10;
-//   carrotCount = 10;
-//   field.innerHTML = '';
-//   replayPopup.classList.add(HIDDEN_CLASSNAME);
-//   onPlayBtnClick();
-// }
+function updateScore() {
+  count.innerText = ITEM_COUNT - gameScore;
+}
 
-playBtn.addEventListener('click', initGame);
+field.addEventListener('click', onItemClick);
+playBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
-// replayBtn.addEventListener('click', );
+replayBtn.addEventListener('click', replayGame);
