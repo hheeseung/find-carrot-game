@@ -1,9 +1,9 @@
 // sound effect
-const GAME_START = new Audio('./sound/bg.mp3');
-const GAME_STOP = new Audio('./sound/alert.wav');
-const GAME_CLEAR = new Audio('./sound/game_win.mp3');
-const CARROT_CLICK = new Audio('./sound/carrot_pull.mp3');
-const BUG_CLICK = new Audio('./sound/bug_pull.mp3');
+const GAME_START = new Audio('sound/bg.mp3');
+const GAME_STOP = new Audio('sound/alert.wav');
+const GAME_CLEAR = new Audio('sound/game_win.mp3');
+const CARROT_CLICK = new Audio('sound/carrot_pull.mp3');
+const BUG_CLICK = new Audio('sound/bug_pull.mp3');
 
 const playBtn = document.querySelector('.play-btn');
 const stopBtn = document.querySelector('.stop-btn');
@@ -65,8 +65,8 @@ function initGame() {
   field.innerHTML = '';
   count.innerText = ITEM_COUNT;
   gameScore = 0;
-  setItems('carrot', ITEM_COUNT, './img/carrot.png');
-  setItems('bug', ITEM_COUNT, './img/bug.png');
+  setItems('carrot', ITEM_COUNT, 'img/carrot.png');
+  setItems('bug', ITEM_COUNT, 'img/bug.png');
   startTimer();
   activeStopButton();
 }
