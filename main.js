@@ -23,14 +23,10 @@ const TIME_LIMIT = 10;
 let gameTimer = undefined;
 let gameScore = 0;
 
-function playSound(sound) {
-  sound.load();
-  sound.play();
-}
-
-function stopSound(sound) {
-  sound.pause();
-}
+field.addEventListener('click', onItemClick);
+playBtn.addEventListener('click', startGame);
+stopBtn.addEventListener('click', stopGame);
+replayBtn.addEventListener('click', replayGame);
 
 function startGame() {
   initGame();
@@ -156,7 +152,11 @@ function updateScore() {
   count.innerText = ITEM_COUNT - gameScore;
 }
 
-field.addEventListener('click', onItemClick);
-playBtn.addEventListener('click', startGame);
-stopBtn.addEventListener('click', stopGame);
-replayBtn.addEventListener('click', replayGame);
+function playSound(sound) {
+  sound.load();
+  sound.play();
+}
+
+function stopSound(sound) {
+  sound.pause();
+}
