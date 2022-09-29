@@ -32,7 +32,17 @@ https://hheeseung.github.io/find-carrot-game/
 
 ### 해결
 
-함수로 작은 단위까지 쪼개서 코드의 재사용을 높이도록 하였습니다. 세분화하여 구현하니 훨씬 방향을 잡기가 수월해졌습니다.
+```javascript
+function stopGame() {
+  inactiveStopButton();
+  clearInterval(gameTimer);
+  popupText('REPLAY❓');
+  stopSound(GAME_START);
+  playSound(GAME_STOP);
+}
+```
+
+위 코드처럼 기능을 세세하게 쪼개서 함수로 각각 구현해 코드의 재사용을 높이도록 하였습니다.
 
 ### 더 생각해봐야 할 것들
 
